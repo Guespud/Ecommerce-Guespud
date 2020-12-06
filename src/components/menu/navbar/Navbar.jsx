@@ -1,10 +1,21 @@
-import React from 'react';
-import '@fortawesome/fontawesome-free/css/all.min.css';
+import React from "react";
+import "@fortawesome/fontawesome-free/css/all.min.css";
 import "bootstrap-css-only/css/bootstrap.min.css";
 import "mdbreact/dist/css/mdb.css";
-import { MDBNavbar, MDBNavbarBrand, MDBNavbarNav, MDBNavbarToggler, MDBCollapse, MDBNavItem, MDBNavLink, MDBContainer, MDBMask, MDBView } from 'mdbreact';
-import { BrowserRouter as Router } from 'react-router-dom';
-import NavbarBackground from '../../assets/image/navbar.png';
+import {
+  MDBNavbar,
+  MDBNavbarBrand,
+  MDBNavbarNav,
+  MDBNavbarToggler,
+  MDBCollapse,
+  MDBNavItem,
+  MDBNavLink,
+  MDBContainer,
+  MDBView,
+} from "mdbreact";
+import { BrowserRouter as Router } from "react-router-dom";
+import NavbarBackground from "../../../assets/image/navbar.png";
+import Cart from "./Cart";
 
 class Navbar extends React.Component {
   constructor(props) {
@@ -44,6 +55,10 @@ class Navbar extends React.Component {
                       <MDBNavItem>
                         <MDBNavLink to="#">contactos</MDBNavLink>
                       </MDBNavItem>
+                    </MDBNavbarNav>
+                    <MDBNavbarNav right>
+                      {/* Carrito */}
+                      <Cart/>
                     </MDBNavbarNav>
                   </MDBCollapse>
                 </MDBContainer>
