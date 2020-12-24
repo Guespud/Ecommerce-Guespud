@@ -32,7 +32,7 @@ const ItemCard = ({ Imagen, Nombre, Estilo, Valor,Stock }) => {
             <strong>{Valor}</strong>
           </h4>
         </MDBCardBody>
-        <CountItem Stock={Stock}/>
+        <CountItem Stock={Stock} Imagen={Imagen} Nombre={Nombre} Valor={Valor}/>
       </MDBCard>
     </div>
   );
