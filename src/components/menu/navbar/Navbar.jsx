@@ -1,4 +1,5 @@
 import React from "react";
+import {Link} from 'react-router-dom';
 import "@fortawesome/fontawesome-free/css/all.min.css";
 import "bootstrap-css-only/css/bootstrap.min.css";
 import "mdbreact/dist/css/mdb.css";
@@ -47,13 +48,13 @@ class Navbar extends React.Component {
                   <MDBCollapse isOpen={this.state.collapse} navbar>
                     <MDBNavbarNav left>
                       <MDBNavItem active>
-                        <MDBNavLink to="#">Home</MDBNavLink>
+                        <MDBNavLink to="/">Home</MDBNavLink>
                       </MDBNavItem>
                       <MDBNavItem>
-                        <MDBNavLink to="#">Tshirts</MDBNavLink>
+                        <MDBNavLink to="/Camisetas">Tshirts</MDBNavLink>
                       </MDBNavItem>
                       <MDBNavItem>
-                        <MDBNavLink to="#">contactos</MDBNavLink>
+                        <MDBNavLink to="/Contactos">contactos</MDBNavLink>
                       </MDBNavItem>
                     </MDBNavbarNav>
                     <MDBNavbarNav right>

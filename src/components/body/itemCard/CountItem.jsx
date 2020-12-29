@@ -50,7 +50,7 @@ const CountItem = ({ Stock, Imagen, Nombre, Valor }) => {
       >
         <MDBIcon icon="tshirt" className="mr-1" /> Agregar Al Carrito
       </MDBBtn>
-      <br />
+      <br/>
     </>
   );
 };
