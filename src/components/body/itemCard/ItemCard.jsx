@@ -1,10 +1,11 @@
 import React from "react";
-import { MDBCard, MDBCardImage, MDBCardBody, MDBBadge } from "mdbreact";
+import {Link} from 'react-router-dom';
+import { MDBCard, MDBCardImage, MDBCardBody, MDBBadge,MDBBtn,MDBIcon } from "mdbreact";
 
 import "./itemCard.css";
 import CountItem from "./CountItem";
 
-const ItemCard = ({ Imagen, Nombre, Estilo, Valor,Stock }) => {
+const ItemCard = ({ Imagen, Caterogia, Estilo, Valor,Stock,Id}) => {
   return (
     <div>
       <MDBCard className="align-items-center">
@@ -15,9 +16,9 @@ const ItemCard = ({ Imagen, Nombre, Estilo, Valor,Stock }) => {
           overlay="white-slight"
         />
         <MDBCardBody className="text-center">
-          <a href="#!" className="grey-text">
+          {/* <a href="#!" className="grey-text">
             <h5>{Nombre}</h5>
-          </a>
+          </a> */}
           <h5>
             <strong>
               <a href="#!" className="dark-grey-text">
@@ -32,7 +33,10 @@ const ItemCard = ({ Imagen, Nombre, Estilo, Valor,Stock }) => {
             <strong>{Valor}</strong>
           </h4>
         </MDBCardBody>
-        <CountItem Stock={Stock} Imagen={Imagen} Nombre={Nombre} Valor={Valor}/>
+        <MDBBtn color="default" to={`/${Caterogia}/${Id}`}>
+        <Link to={`/${Caterogia}/${Id}`}>Ver detalle</Link> <MDBIcon icon="hand-peace" className="ml-1" />
+      </MDBBtn>
+        {/* <CountItem Stock={Stock} Imagen={Imagen} Nombre={Nombre} Valor={Valor}/> */}
       </MDBCard>
     </div>
   );
