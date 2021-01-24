@@ -1,5 +1,4 @@
-import React, { Component } from "react";
-import {Link} from 'react-router-dom';
+import React, { useState,useContext} from "react";
 import {
   MDBNavbar,
   MDBNavbarBrand,
@@ -14,21 +13,14 @@ import {
   MDBDropdownItem,
   MDBIcon,
 } from "mdbreact";
-import { BrowserRouter as Router } from "react-router-dom";
 import CartSlider from "./CartSlider";
+import { Store } from "../../../store";
 
-class NavbarLinks extends Component {
-  state = {
-    isOpen: false,
-  };
+const NavbarLinks = () => {
 
-  toggleCollapse = () => {
-    this.setState({ isOpen: !this.state.isOpen });
-  };
+  const [data, setData] = useContext(Store);
 
-  render() {
     return (
-      <Router>
         <MDBNavbar color="default-color" dark expand="md">
           <MDBNavbarBrand>
             <strong className="white-text">G-Shop</strong>
@@ -40,17 +32,13 @@ class NavbarLinks extends Component {
               <MDBNavItem>
                 <MDBNavLink to="/Hombre">Hombre</MDBNavLink>
               </MDBNavItem>
-              <MDBNavItem>
-                <MDBNavLink to="/Mujer">Mujer</MDBNavLink>
-              </MDBNavItem>
             </MDBNavbarNav>
             <MDBNavbarNav right>
               <CartSlider/>
+              <span >{data.cantidad}</span>
             </MDBNavbarNav>
         </MDBNavbar>
-      </Router>
-    );
-  }
+    )
 }
 
 export default NavbarLinks;

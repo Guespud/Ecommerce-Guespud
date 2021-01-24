@@ -6,8 +6,6 @@ import ItemListCard from "./components/body/ItemListCart";
 import NavbarHome from "./components/menu/navbar/NavbarHome";
 import Hombre from "./components/routes/Hombre";
 import Error404 from "./components/routes/Error404";
-import Mujer from "./components/routes/Mujer";
-import HomeList from "./components/menu/HomeList";
 import NavbarLinks from "./components/menu/navbar/NavbarLinks";
 import Detail from "./components/routes/detail/Detail";
 import { Store } from "./store";
@@ -19,6 +17,7 @@ function App() {
     cantidad: 0,
     freeShipping: 4000,
     cuotas: 3,
+    precioTotal: 0,
   });
 
   return (
@@ -27,17 +26,12 @@ function App() {
         <Switch>
           <Route exact path="/">
             <NavbarHome />
-            <HomeList />
             <hr />
             <ItemListCard />
           </Route>
           <Route path="/Hombre">
             <NavbarLinks />
             <Hombre />
-          </Route>
-          <Route path="/Mujer">
-            <NavbarLinks />
-            <Mujer />
           </Route>
           <Route path="/cart">
           <NavbarLinks />

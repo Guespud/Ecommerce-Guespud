@@ -22,7 +22,8 @@ const ProductDetail = ({ item, Stock }) => {
     setData({
       ...data,
       cantidad: data.cantidad + counter,
-      items: [...data.items, item],
+      items: [...data.items, { item: item.data, cantidad: counter }],
+      precioTotal: data.precioTotal + item.data.price * counter,
     });
     history.push("/cart");
     // alert(`Agregaste ${counter} productos al carrito`);

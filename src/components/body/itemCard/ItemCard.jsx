@@ -5,7 +5,7 @@ import { MDBCard, MDBCardImage, MDBCardBody, MDBBadge,MDBBtn,MDBIcon } from "mdb
 import "./itemCard.css";
 import CountItem from "./CountItem";
 
-const ItemCard = ({ Imagen, Caterogia, Estilo, Valor,Stock,Id}) => {
+const ItemCard = ({ Imagen, category, Estilo, Valor,Stock,Id}) => {
   return (
     <div>
       <MDBCard className="align-items-center">
@@ -33,8 +33,8 @@ const ItemCard = ({ Imagen, Caterogia, Estilo, Valor,Stock,Id}) => {
             <strong>{Valor}</strong>
           </h4>
         </MDBCardBody>
-        <MDBBtn color="default" to={`/${Caterogia}/${Id}`}>
-        <Link to={`/${Caterogia}/${Id}`}>Ver detalle</Link> <MDBIcon icon="hand-peace" className="ml-1" />
+        <MDBBtn color="default" to={`/${category}/${Id}`}>
+        <Link to={`/${category}/${Id}`}>Ver detalle</Link> <MDBIcon icon="hand-peace" className="ml-1" />
       </MDBBtn>
         {/* <CountItem Stock={Stock} Imagen={Imagen} Nombre={Nombre} Valor={Valor}/> */}
       </MDBCard>
