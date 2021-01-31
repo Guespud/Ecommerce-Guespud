@@ -1,17 +1,10 @@
-import React, { useState,useContext} from "react";
+import React, { useContext} from "react";
 import {
   MDBNavbar,
   MDBNavbarBrand,
   MDBNavbarNav,
   MDBNavItem,
   MDBNavLink,
-  MDBNavbarToggler,
-  MDBCollapse,
-  MDBDropdown,
-  MDBDropdownToggle,
-  MDBDropdownMenu,
-  MDBDropdownItem,
-  MDBIcon,
 } from "mdbreact";
 import CartSlider from "./CartSlider";
 import { Store } from "../../../store";

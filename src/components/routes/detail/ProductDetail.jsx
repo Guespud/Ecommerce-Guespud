@@ -11,12 +11,15 @@ import {
   MDBBtn,
   MDBIcon,
 } from "mdbreact";
-import CountItem from "../../body/itemCard/CountItem";
+import {getFirestore} from '../../../firebase';
 
 const ProductDetail = ({ item, Stock }) => {
   const history = useHistory();
   const [data, setData] = useContext(Store);
   const [counter, setCounter] = useState(0);
+  const db = getFirestore();
+
+  console.log(item,"estos son los items que vienen de detail");
 
   const onAdd = () => {
     setData({
@@ -41,22 +44,25 @@ const ProductDetail = ({ item, Stock }) => {
     }
   };
 
+  const handleUpdatePrice = () => {
+    db.collection('productos').doc(item.data.id).update({
+        price: 100,
+    })
+    .then(() => console.log('Se actualizó correctamente'))
+    .catch(error => console.log(error));
+}
+
   return (
     <>
       <section className="text-center my-5">
         <h2 className="h1-responsive font-weight-bold text-center my-5">
-          {item.title}
+          {item.data.title}
         </h2>
-        {/* <p className="grey-text text-center w-responsive mx-auto mb-5">
-        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Fugit,
-        error amet numquam iure provident voluptate esse quasi, veritatis
-        totam voluptas nostrum quisquam eum porro a pariatur veniam.
-      </p> */}
         <MDBRow>
           <MDBCol lg="12" md="6" className="mb-lg-0 mb-4">
             <MDBCard className="align-items-center">
               <MDBCardImage
-                src={item.img}
+                src={item.data.img}
                 top
                 alt="sample photo"
                 overlay="white-slight"
@@ -68,7 +74,7 @@ const ProductDetail = ({ item, Stock }) => {
                 <h5>
                   <strong>
                     <a href="#!" className="dark-grey-text">
-                      {item.title}{" "}
+                      {item.data.title}{" "}
                       <MDBBadge pill color="danger">
                         NEW
                       </MDBBadge>
@@ -76,7 +82,7 @@ const ProductDetail = ({ item, Stock }) => {
                   </strong>
                 </h5>
                 <h4 className="font-weight-bold blue-text">
-                  <strong>${item.price}</strong>
+                  <strong>${item.data.price}</strong>
                 </h4>
                 {/* <CountItem /> */}
                 <MDBRow center>
@@ -106,6 +112,13 @@ const ProductDetail = ({ item, Stock }) => {
                   disabled={counter === 0 ? "disabled" : null}
                 >
                   <MDBIcon icon="tshirt" className="mr-1" /> Agregar Al Carrito
+                </MDBBtn>
+                <MDBBtn
+                  color="default"
+                  onClick={handleUpdatePrice}
+                  disabled={counter === 0 ? "disabled" : null}
+                >
+                  <MDBIcon icon="tshirt" className="mr-1" /> Actualizar precio
                 </MDBBtn>
                 <br />
               </MDBCardBody>

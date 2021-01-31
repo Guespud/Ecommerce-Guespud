@@ -3,7 +3,7 @@ import '@firebase/firestore';
 
 
 const app = firebase.initializeApp({
-    apiKey: process.env.API_KEY,
+    apiKey: "AIzaSyDQMDtElX_dRZLO7Iic_L7kCynJjpJXdx4",
     authDomain: "ecommerce-gshop.firebaseapp.com",
     projectId: "ecommerce-gshop",
     storageBucket: "ecommerce-gshop.appspot.com",

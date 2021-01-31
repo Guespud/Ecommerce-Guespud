@@ -1,37 +1,42 @@
 import { useEffect, useState } from "react";
 import { useParams, Link } from "react-router-dom";
-import { products } from "../../../products";
 import ProductDetail from "./ProductDetail";
-import { MDBBreadcrumb, MDBBreadcrumbItem, MDBContainer } from "mdbreact";
+import { MDBBreadcrumb, MDBBreadcrumbItem } from "mdbreact";
+import { getFirestore } from "../../../firebase";
 
 const Detail = () => {
   const { id } = useParams();
   const [product, setProduct] = useState(null);
+  const db = getFirestore();
 
-  const getProduct = new Promise((resolve, reject) => {
-    const selectedProduct = products.filter((item) => item.id === parseInt(id));
-    resolve(selectedProduct[0]);
-  });
+  console.log(id,"este es el id");
 
   useEffect(() => {
-    getProduct
-      .then((response) => setProduct(response))
-      .catch((error) => console.log(error));
+    db.collection('productos').doc(id).get()
+      .then(doc => {
+        if(doc.exists) {
+          console.log("entro al if que si existe");
+          setProduct({ id: doc.id, data: doc.data() });
+        }
+      })
+      .catch(e => console.log(e));
   }, []);
+
+  console.log(product,"esta es la data que esta fallando");
 
   return (
     <>
       {product ? (
         <div className="container">
-                <br/>
+          <br />
           <MDBBreadcrumb light color="default">
-            <MDBBreadcrumbItem><Link to={`/${product.category}`}>
-                {product.category.split("-").join(" ")}
-              </Link></MDBBreadcrumbItem>
-            <MDBBreadcrumbItem active>{product.title}</MDBBreadcrumbItem>
+            <MDBBreadcrumbItem>
+              <Link to={`/${product.data.category}`}>{product.data.category.split("-").join(" ")}</Link>
+            </MDBBreadcrumbItem>
+            <MDBBreadcrumbItem active>{product.data.title}</MDBBreadcrumbItem>
           </MDBBreadcrumb>
 
-          <ProductDetail item={product} Stock={product.Stock}/>
+          <ProductDetail item={product} Stock={product.data.Stock} />
         </div>
       ) : (
         <p>Cargando producto...</p>

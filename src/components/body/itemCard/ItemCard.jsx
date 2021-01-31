@@ -1,11 +1,9 @@
 import React from "react";
 import {Link} from 'react-router-dom';
 import { MDBCard, MDBCardImage, MDBCardBody, MDBBadge,MDBBtn,MDBIcon } from "mdbreact";
-
 import "./itemCard.css";
-import CountItem from "./CountItem";
 
-const ItemCard = ({ Imagen, category, Estilo, Valor,Stock,Id}) => {
+const ItemCard = ({ key,Imagen, category, Estilo, Valor,Stock,Id}) => {
   return (
     <div>
       <MDBCard className="align-items-center">
@@ -33,10 +31,8 @@ const ItemCard = ({ Imagen, category, Estilo, Valor,Stock,Id}) => {
             <strong>{Valor}</strong>
           </h4>
         </MDBCardBody>
-        <MDBBtn color="default" to={`/${category}/${Id}`}>
-        <Link to={`/${category}/${Id}`}>Ver detalle</Link> <MDBIcon icon="hand-peace" className="ml-1" />
+        <MDBBtn color="default" > <Link to={`/${category}/${Id}`}>Ver detalle</Link> <MDBIcon icon="hand-peace" className="ml-1" />
       </MDBBtn>
-        {/* <CountItem Stock={Stock} Imagen={Imagen} Nombre={Nombre} Valor={Valor}/> */}
       </MDBCard>
     </div>
   );

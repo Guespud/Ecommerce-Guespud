@@ -5,17 +5,13 @@ import { getFirestore } from "../../firebase";
 
 const ItemListCard = () => {
   const [items, setItems] = useState([]);
-
   const db = getFirestore();
 
   const GetProducstFromDB = () => {
-    db.collection("productos")
-      .where("outstanding", "==", true)
-      .get()
+    db.collection('productos').where("outstanding", "==", true).get()
       .then((docs) => {
         let arr = [];
         docs.forEach((doc) => {
-          console.log(doc)
           arr.push({ id: doc.id, data: doc.data() });
         });
 
@@ -39,13 +35,13 @@ const ItemListCard = () => {
               {items.map((item, index) => (
                 <MDBCol lg="3" md="6" className="mb-lg-0 mb-4">
                   <ItemCard
-                    key={index}
-                    Imagen={item.img}
-                    category={item.category}
-                    Estilo={item.title}
-                    Valor={item.price}
-                    Stock={item.Stock}
-                    Id={item.Id}
+                    key={item.data.id}
+                    Imagen={item.data.img}
+                    category={item.data.category}
+                    Estilo={item.data.title}
+                    Valor={item.data.price}
+                    Stock={item.data.Stock}
+                    Id={item.id}
                   />
                 </MDBCol>
               ))}
