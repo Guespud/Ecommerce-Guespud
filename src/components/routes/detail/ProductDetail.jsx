@@ -21,16 +21,40 @@ const ProductDetail = ({ item, Stock }) => {
 
   console.log(item,"estos son los items que vienen de detail");
 
+  // const onAdd = () => {
+    
+  //   setData({
+  //     ...data,
+  //     cantidad: data.cantidad + counter,
+  //     items: [...data.items, { item: item.data, cantidad: counter }],
+  //     precioTotal: data.precioTotal + item.data.price * counter,
+  //   });
+  //   history.push("/cart");
+  //   // alert(`Agregaste ${counter} productos al carrito`);
+  // };
+
   const onAdd = () => {
-    setData({
-      ...data,
-      cantidad: data.cantidad + counter,
-      items: [...data.items, { item: item.data, cantidad: counter }],
-      precioTotal: data.precioTotal + item.data.price * counter,
-    });
-    history.push("/cart");
-    // alert(`Agregaste ${counter} productos al carrito`);
-  };
+    const actualId = item.id;
+    const exist = data.items.some(items => items.id === actualId);
+    if(exist) {
+      const productosCarrito = data.items.map ( producto => {
+        if( producto.id === actualId) {
+          producto.cantidad += counter;
+          return producto;
+        } else {
+          return producto;
+        }
+      });
+      data.items = [...productosCarrito]
+      history.push("/cart");
+    } else {
+      item.cantidad = counter;
+      setData({...data, cantidad: data.cantidad + counter,
+        items:[...data.items, item]});
+        history.push("/cart");
+    }
+        history.push("/cart");
+  }
 
   const handleAdd = () => {
     setCounter(counter + 1);
