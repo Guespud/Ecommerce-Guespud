@@ -21,18 +21,6 @@ const ProductDetail = ({ item, Stock }) => {
 
   console.log(item,"estos son los items que vienen de detail");
 
-  // const onAdd = () => {
-    
-  //   setData({
-  //     ...data,
-  //     cantidad: data.cantidad + counter,
-  //     items: [...data.items, { item: item.data, cantidad: counter }],
-  //     precioTotal: data.precioTotal + item.data.price * counter,
-  //   });
-  //   history.push("/cart");
-  //   // alert(`Agregaste ${counter} productos al carrito`);
-  // };
-
   const onAdd = () => {
     const actualId = item.id;
     const exist = data.items.some(items => items.id === actualId);

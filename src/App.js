@@ -10,6 +10,7 @@ import NavbarLinks from "./components/menu/navbar/NavbarLinks";
 import Detail from "./components/routes/detail/Detail";
 import { Store } from "./store";
 import Cart from "./components/Cart";
+import Gorras from "./components/routes/Gorras";
 
 function App() {
   const [data, setData] = useState({
@@ -32,6 +33,10 @@ function App() {
           <Route path="/Hombre">
             <NavbarLinks />
             <Hombre />
+          </Route>
+          <Route path="/Gorras">
+            <NavbarLinks />
+            <Gorras />
           </Route>
           <Route path="/cart">
           <NavbarLinks />

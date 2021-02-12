@@ -25,6 +25,9 @@ const NavbarLinks = () => {
               <MDBNavItem>
                 <MDBNavLink to="/Hombre">Hombre</MDBNavLink>
               </MDBNavItem>
+              <MDBNavItem>
+                <MDBNavLink to="/Gorra">Gorra</MDBNavLink>
+              </MDBNavItem>
             </MDBNavbarNav>
             <MDBNavbarNav right>
               <CartSlider/>
